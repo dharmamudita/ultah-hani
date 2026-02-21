@@ -67,7 +67,7 @@ export default function Countdown({ onComplete }: { onComplete: () => void }) {
         setMounted(true);
 
         // Setup music
-        const audio = new Audio("/Selamat Ulang Tahun Jamrud.mp3");
+        const audio = new Audio("/birthday-song.mp3");
         audio.loop = true;
         audio.volume = 0.3;
         audioRef.current = audio;

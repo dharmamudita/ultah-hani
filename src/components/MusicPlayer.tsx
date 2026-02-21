@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Play, Pause, Music, Volume2, VolumeX } from "lucide-react";
 
 // Taruh file lagu di folder public, contoh: public/song.mp3
-const SONG_URL = "/Selamat Ulang Tahun Jamrud.mp3";
+const SONG_URL = "/birthday-song.mp3";
 
 export default function MusicPlayer() {
     const audioRef = useRef<HTMLAudioElement | null>(null);
