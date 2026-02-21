@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, VolumeX } from "lucide-react";
 
 // TARGET: 2 Maret 2026 jam 00:00 WIB (ulang tahun Hastin Nurafni)
 const TARGET_DATE = new Date("2026-03-02T00:00:00+07:00");
@@ -60,32 +59,14 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
 export default function Countdown({ onComplete }: { onComplete: () => void }) {
     const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(getTimeLeft());
     const [mounted, setMounted] = useState(false);
-    const [isMuted, setIsMuted] = useState(false);
-    const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
         setMounted(true);
-
-        // Setup music
-        const audio = new Audio("/birthday-song.mp3");
-        audio.loop = true;
-        audio.volume = 0.3;
-        audioRef.current = audio;
-
-        // Autoplay on first user interaction
-        const playOnInteract = () => {
-            audio.play().catch(() => { });
-            document.removeEventListener("click", playOnInteract);
-            document.removeEventListener("touchstart", playOnInteract);
-        };
-        document.addEventListener("click", playOnInteract);
-        document.addEventListener("touchstart", playOnInteract);
 
         const timer = setInterval(() => {
             const tl = getTimeLeft();
             if (!tl) {
                 clearInterval(timer);
-                audio.pause();
                 onComplete();
             }
             setTimeLeft(tl);
@@ -93,18 +74,10 @@ export default function Countdown({ onComplete }: { onComplete: () => void }) {
 
         return () => {
             clearInterval(timer);
-            audio.pause();
-            audio.remove();
-            document.removeEventListener("click", playOnInteract);
-            document.removeEventListener("touchstart", playOnInteract);
         };
     }, [onComplete]);
 
-    const toggleMute = useCallback(() => {
-        if (!audioRef.current) return;
-        audioRef.current.muted = !isMuted;
-        setIsMuted(!isMuted);
-    }, [isMuted]);
+
 
     if (!mounted) {
         return (
@@ -223,16 +196,7 @@ export default function Countdown({ onComplete }: { onComplete: () => void }) {
                 </motion.div>
             </div>
 
-            {/* Music toggle */}
-            <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2 }}
-                onClick={toggleMute}
-                className="fixed bottom-6 right-6 z-[10000] w-10 h-10 rounded-full bg-white/70 border border-pink-200 flex items-center justify-center text-gray-500 hover:text-pink-500 hover:bg-white transition-all touch-manipulation shadow-sm"
-            >
-                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-            </motion.button>
+
         </motion.div>
     );
 }
