@@ -47,6 +47,8 @@ export default function Home() {
 
   return (
     <>
+      {/* Music Player - selalu muncul di semua halaman */}
+      <MusicPlayer />
       {/* Stage 0: Countdown (real-time) */}
       <AnimatePresence>
         {stage === "countdown" && (
@@ -84,7 +86,6 @@ export default function Home() {
       {stage === "website" && (
         <>
           <CustomCursor />
-          <MusicPlayer />
 
           <main className="min-h-screen bg-[#fff1f5] text-gray-800 selection:bg-pink-500 selection:text-white overflow-x-hidden">
 
