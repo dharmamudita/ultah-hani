@@ -31,6 +31,20 @@ export default function MusicPlayer() {
             setProgress((audio.currentTime / audio.duration) * 100 || 0);
         });
 
+        // Auto-play langsung (mungkin diblokir browser)
+        audio.play().then(() => {
+            setIsPlaying(true);
+        }).catch(() => {
+            // Kalau diblokir, play saat user klik/touch pertama
+            const playOnInteract = () => {
+                audio.play().then(() => setIsPlaying(true)).catch(() => { });
+                document.removeEventListener("click", playOnInteract);
+                document.removeEventListener("touchstart", playOnInteract);
+            };
+            document.addEventListener("click", playOnInteract);
+            document.addEventListener("touchstart", playOnInteract);
+        });
+
         return () => {
             audio.pause();
             audio.remove();
