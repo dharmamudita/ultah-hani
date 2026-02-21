@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function CustomCursor() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
     const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
@@ -33,7 +33,7 @@ export default function CustomCursor() {
     return (
         <>
             <motion.div
-                className="fixed top-0 left-0 w-4 h-4 bg-cyan-400 rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+                className="fixed top-0 left-0 w-4 h-4 bg-pink-400 rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
                 animate={{
                     x: mousePosition.x - 8,
                     y: mousePosition.y - 8,
@@ -42,7 +42,7 @@ export default function CustomCursor() {
                 transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
             />
             <motion.div
-                className="fixed top-0 left-0 w-10 h-10 border border-cyan-500/50 rounded-full pointer-events-none z-[9998] hidden md:block"
+                className="fixed top-0 left-0 w-10 h-10 border border-pink-500/50 rounded-full pointer-events-none z-[9998] hidden md:block"
                 animate={{
                     x: mousePosition.x - 20,
                     y: mousePosition.y - 20,

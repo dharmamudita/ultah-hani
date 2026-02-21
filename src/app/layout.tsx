@@ -22,8 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Another Voltz | Premium Academic Solutions",
-  description: "Jasa joki tugas, skripsi, dan coding #1 dengan kualitas premium dan terpercaya.",
+  title: "🎂 Happy 20th Birthday Hastin Nurafni!",
+  description: "Halaman spesial buat Hastin Nurafni yang turning 20. 02 Maret 2006.",
 };
 
 export default function RootLayout({
