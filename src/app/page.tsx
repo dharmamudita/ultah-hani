@@ -20,10 +20,10 @@ const LoadingScreen = dynamic(() => import("@/components/ui/LoadingScreen"), { s
 type Stage = "countdown" | "splash" | "loading" | "password" | "gift" | "website";
 
 export default function Home() {
-  // Cek waktu: kalau belum 2 Maret → countdown, kalau sudah → langsung splash
-  const TARGET_DATE = new Date("2026-03-02T00:00:00+07:00");
-  const initialStage: Stage = new Date() >= TARGET_DATE ? "splash" : "countdown";
-  const [stage, setStage] = useState<Stage>(initialStage);
+  // Skip countdown sementara — langsung ke splash buat preview
+  // const TARGET_DATE = new Date("2026-03-02T00:00:00+07:00");
+  // const initialStage: Stage = new Date() >= TARGET_DATE ? "splash" : "countdown";
+  const [stage, setStage] = useState<Stage>("splash");
 
   const handleCountdownDone = useCallback(() => {
     setStage("splash");
