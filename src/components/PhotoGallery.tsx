@@ -6,31 +6,32 @@ import AnimatedText from "./ui/AnimatedText";
 import { Camera, Heart, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
-// Photos
 const photos = [
-    { id: 1, src: "/foto/1.jpeg", title: "Buket Hani", caption: "Kalau bunga bisa diganti sama kamu, pasti lebih cantik 💐", size: "large" },
-    { id: 4, src: "/foto/4.jpeg", title: "Cantik Banget", caption: "Nggak pernah bosen liatin kamu 💕", size: "medium" },
-    { id: 9, src: "/foto/9.jpeg", title: "Night Out", caption: "Pose love selalu bikin meleleh 💗", size: "medium" },
-    { id: 3, src: "/foto/3.jpeg", title: "Mirror Selfie", caption: "Momen bareng yang selalu bikin kangen", size: "tall" },
-    { id: 6, src: "/foto/6.jpeg", title: "Cafe Date", caption: "Ngopi bareng kamu itu healing terbaik ☕", size: "medium" },
-    { id: 14, src: "/foto/14.jpeg", title: "Peace! ✌️", caption: "Selalu ceria dan bikin semangat", size: "wide" },
-    { id: 8, src: "/foto/8.jpeg", title: "Di Kampus", caption: "Mahasiswi paling cantik seangkatan 📚", size: "medium" },
-    { id: 5, src: "/foto/5.jpeg", title: "4 Ekspresi", caption: "Setiap ekspresi kamu tuh lucu semua", size: "large" },
-    { id: 13, src: "/foto/13.jpeg", title: "Pink Day", caption: "Warna pink emang cocok banget sama kamu 🩷", size: "medium" },
-    { id: 10, src: "/foto/10.jpeg", title: "Senyum Manis", caption: "Senyum yang bikin hari jadi lebih baik", size: "tall" },
-    { id: 15, src: "/foto/15.jpeg", title: "Aesthetic", caption: "Cantik bareng bunga-bunga 🌸", size: "medium" },
-    { id: 7, src: "/foto/7.jpeg", title: "Nature Vibes", caption: "Cantiknya natural banget 🌿", size: "medium" },
-    { id: 12, src: "/foto/12.jpeg", title: "Hangout Vibes", caption: "Senyum kamu itu contagious banget 😊", size: "wide" },
-    { id: 17, src: "/foto/17.jpeg", title: "Shopping!", caption: "Mall date kapan lagi? 🛍️", size: "medium" },
-    { id: 11, src: "/foto/11.jpeg", title: "Selfie di Kelas", caption: "Di kelas aja tetep cantik", size: "medium" },
-    { id: 16, src: "/foto/16.jpeg", title: "School Day", caption: "Paling rajin dan paling cantik di kelas", size: "tall" },
+    { id: 1, src: "/foto/1.jpeg", title: "Buket Hani", caption: "Kalau bunga bisa diganti sama kamu 💐" },
+    { id: 4, src: "/foto/4.jpeg", title: "Cantik Banget", caption: "Nggak pernah bosen liatin kamu 💕" },
+    { id: 9, src: "/foto/9.jpeg", title: "Night Out", caption: "Pose love bikin meleleh 💗" },
+    { id: 3, src: "/foto/3.jpeg", title: "Mirror Selfie", caption: "Momen bareng yang bikin kangen" },
+    { id: 6, src: "/foto/6.jpeg", title: "Cafe Date", caption: "Healing terbaik ☕" },
+    { id: 14, src: "/foto/14.jpeg", title: "Peace! ✌️", caption: "Selalu ceria dan semangat" },
+    { id: 8, src: "/foto/8.jpeg", title: "Di Kampus", caption: "Paling cantik seangkatan 📚" },
+    { id: 5, src: "/foto/5.jpeg", title: "4 Ekspresi", caption: "Setiap ekspresi lucu semua" },
+    { id: 13, src: "/foto/13.jpeg", title: "Pink Day", caption: "Pink cocok banget sama kamu 🩷" },
+    { id: 10, src: "/foto/10.jpeg", title: "Senyum Manis", caption: "Bikin hari jadi lebih baik" },
+    { id: 15, src: "/foto/15.jpeg", title: "Aesthetic", caption: "Cantik bareng bunga 🌸" },
+    { id: 7, src: "/foto/7.jpeg", title: "Nature Vibes", caption: "Natural banget 🌿" },
+    { id: 12, src: "/foto/12.jpeg", title: "Hangout Vibes", caption: "Senyumnya contagious 😊" },
+    { id: 17, src: "/foto/17.jpeg", title: "Shopping!", caption: "Mall date kapan lagi? 🛍️" },
+    { id: 11, src: "/foto/11.jpeg", title: "Di Kelas", caption: "Tetep cantik di mana aja" },
+    { id: 16, src: "/foto/16.jpeg", title: "School Day", caption: "Paling rajin di kelas" },
 ];
 
-// Featured photos for the filmstrip
 const filmPhotos = [
     "/foto/14.jpeg", "/foto/9.jpeg", "/foto/13.jpeg", "/foto/6.jpeg",
     "/foto/4.jpeg", "/foto/8.jpeg", "/foto/15.jpeg", "/foto/17.jpeg",
 ];
+
+// Slight random-ish rotations for polaroid effect
+const rotations = [-2, 1.5, -1, 2, -1.5, 0.5, -2.5, 1, -0.5, 2, -1, 1.5, -2, 0.5, 1, -1.5];
 
 export default function PhotoGallery() {
     const ref = useRef(null);
@@ -38,18 +39,16 @@ export default function PhotoGallery() {
     const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
 
     const selectedIdx = selectedPhoto !== null ? photos.findIndex(p => p.id === selectedPhoto) : -1;
-
-    const goNext = () => {
-        if (selectedIdx < photos.length - 1) setSelectedPhoto(photos[selectedIdx + 1].id);
-    };
-    const goPrev = () => {
-        if (selectedIdx > 0) setSelectedPhoto(photos[selectedIdx - 1].id);
-    };
+    const goNext = () => { if (selectedIdx < photos.length - 1) setSelectedPhoto(photos[selectedIdx + 1].id); };
+    const goPrev = () => { if (selectedIdx > 0) setSelectedPhoto(photos[selectedIdx - 1].id); };
 
     return (
         <section id="gallery" className="relative py-16 md:py-32 bg-gradient-to-b from-white via-pink-50/50 to-pink-50 overflow-hidden">
-            {/* Background blurs */}
+            {/* Background decoration */}
             <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-20 left-10 text-6xl opacity-5 rotate-12">📸</div>
+                <div className="absolute top-1/3 right-20 text-5xl opacity-5 -rotate-6">🌸</div>
+                <div className="absolute bottom-40 left-1/4 text-4xl opacity-5 rotate-3">💕</div>
                 <div className="absolute top-1/4 -left-40 w-[500px] h-[500px] bg-pink-500/[0.03] rounded-full blur-[120px]" />
                 <div className="absolute bottom-1/4 -right-40 w-[400px] h-[400px] bg-rose-500/[0.04] rounded-full blur-[100px]" />
             </div>
@@ -58,10 +57,7 @@ export default function PhotoGallery() {
             <div className="relative mb-12 md:mb-20 overflow-hidden">
                 <div className="flex gap-3 md:gap-4 gallery-scroll" style={{ width: "fit-content" }}>
                     {[...filmPhotos, ...filmPhotos].map((src, idx) => (
-                        <div
-                            key={idx}
-                            className="w-[140px] h-[100px] md:w-[260px] md:h-[160px] rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0 hover:scale-105 transition-transform duration-300 shadow-lg shadow-pink-200/30"
-                        >
+                        <div key={idx} className="w-[140px] h-[100px] md:w-[260px] md:h-[160px] rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0 hover:scale-105 transition-transform duration-300 shadow-lg shadow-pink-200/30">
                             <Image src={src} alt={`Film ${idx}`} width={260} height={160} className="w-full h-full object-cover" />
                         </div>
                     ))}
@@ -86,59 +82,62 @@ export default function PhotoGallery() {
                         animation="fadeUp"
                     />
 
-                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} viewport={{ once: true }} className="text-sm md:text-base text-gray-500">
+                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} viewport={{ once: true }} className="text-sm md:text-base text-gray-500 max-w-md mx-auto">
                         Setiap momen bareng kamu selalu jadi cerita yang seru 💕
                     </motion.p>
                 </div>
 
-                {/* Bento Grid Gallery */}
-                <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[140px] md:auto-rows-[180px] gap-2 md:gap-3">
-                    {photos.map((photo, idx) => {
-                        let spanClass = "";
-                        if (photo.size === "large") spanClass = "col-span-2 row-span-2";
-                        else if (photo.size === "tall") spanClass = "row-span-2";
-                        else if (photo.size === "wide") spanClass = "col-span-2";
+                {/* Polaroid Masonry Gallery */}
+                <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-5">
+                    {photos.map((photo, idx) => (
+                        <motion.div
+                            key={photo.id}
+                            initial={{ opacity: 0, y: 40, rotate: rotations[idx] * 2 }}
+                            animate={isInView ? { opacity: 1, y: 0, rotate: rotations[idx] } : {}}
+                            transition={{ duration: 0.6, delay: idx * 0.05, type: "spring", stiffness: 100 }}
+                            whileHover={{ rotate: 0, scale: 1.03, zIndex: 10 }}
+                            className="break-inside-avoid mb-4 md:mb-5 cursor-pointer group"
+                            onClick={() => setSelectedPhoto(photo.id)}
+                        >
+                            {/* Polaroid frame */}
+                            <div className="bg-white rounded-lg md:rounded-xl p-2 md:p-3 shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_40px_rgba(236,72,153,0.15)] transition-shadow duration-300">
+                                {/* Photo */}
+                                <div className="relative overflow-hidden rounded-md md:rounded-lg">
+                                    <Image
+                                        src={photo.src}
+                                        alt={photo.title}
+                                        width={400}
+                                        height={500}
+                                        className="w-full h-auto block group-hover:scale-105 transition-transform duration-500"
+                                        sizes="(max-width: 768px) 50vw, 25vw"
+                                    />
 
-                        return (
-                            <motion.div
-                                key={photo.id}
-                                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                                transition={{ duration: 0.5, delay: idx * 0.04 }}
-                                className={`group relative ${spanClass} rounded-xl md:rounded-2xl overflow-hidden cursor-pointer`}
-                                onClick={() => setSelectedPhoto(photo.id)}
-                            >
-                                <Image
-                                    src={photo.src}
-                                    alt={photo.title}
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                                    sizes="(max-width: 768px) 50vw, 25vw"
-                                />
+                                    {/* Hover shine */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
 
-                                {/* Subtle gradient always visible */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                                    {/* Heart */}
+                                    <motion.div
+                                        className="absolute top-2 right-2 w-7 h-7 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm"
+                                        initial={{ scale: 0 }}
+                                        whileHover={{ scale: 1.2 }}
+                                    >
+                                        <Heart size={12} className="text-pink-500" fill="currentColor" />
+                                    </motion.div>
+                                </div>
 
-                                {/* Hover overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-3 md:p-4 z-10">
-                                    <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                                        <h4 className="text-white font-bold font-space text-xs md:text-sm mb-0.5">{photo.title}</h4>
-                                        <p className="text-white/70 text-[10px] md:text-xs leading-tight">{photo.caption}</p>
+                                {/* Caption area */}
+                                <div className="pt-2 md:pt-3 pb-1">
+                                    <div className="flex items-start justify-between gap-2">
+                                        <div>
+                                            <h4 className="text-gray-800 font-bold font-space text-[11px] md:text-xs">{photo.title}</h4>
+                                            <p className="text-gray-400 text-[9px] md:text-[10px] mt-0.5 leading-tight">{photo.caption}</p>
+                                        </div>
+                                        <span className="text-[9px] text-pink-400/60 font-mono whitespace-nowrap">{String(idx + 1).padStart(2, "0")}</span>
                                     </div>
                                 </div>
-
-                                {/* Heart */}
-                                <div className="absolute top-2 right-2 w-6 h-6 md:w-7 md:h-7 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                                    <Heart size={10} className="text-white" />
-                                </div>
-
-                                {/* Number badge */}
-                                <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 bg-white/20 backdrop-blur-md rounded-full px-2 py-0.5 z-10 opacity-60 group-hover:opacity-0 transition-opacity">
-                                    <span className="text-white text-[9px] md:text-[10px] font-mono font-bold">{String(idx + 1).padStart(2, "0")}</span>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
 
                 <motion.p
@@ -146,13 +145,13 @@ export default function PhotoGallery() {
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
                     viewport={{ once: true }}
-                    className="mt-8 md:mt-12 text-center text-gray-400 text-xs font-mono"
+                    className="mt-10 md:mt-14 text-center text-gray-400 text-xs font-mono"
                 >
                     📸 tap foto untuk lihat lebih besar
                 </motion.p>
             </div>
 
-            {/* Lightbox Modal */}
+            {/* Lightbox */}
             <AnimatePresence>
                 {selectedPhoto !== null && selectedIdx !== -1 && (
                     <motion.div
@@ -162,42 +161,29 @@ export default function PhotoGallery() {
                         className="fixed inset-0 z-[10002] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4"
                         onClick={() => setSelectedPhoto(null)}
                     >
-                        {/* Close */}
-                        <button
-                            onClick={() => setSelectedPhoto(null)}
-                            className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-30"
-                        >
+                        <button onClick={() => setSelectedPhoto(null)} className="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-30">
                             <X size={20} />
                         </button>
 
-                        {/* Prev */}
                         {selectedIdx > 0 && (
-                            <button
-                                onClick={(e) => { e.stopPropagation(); goPrev(); }}
-                                className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-30"
-                            >
+                            <button onClick={(e) => { e.stopPropagation(); goPrev(); }} className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-30">
                                 <ChevronLeft size={20} />
                             </button>
                         )}
 
-                        {/* Next */}
                         {selectedIdx < photos.length - 1 && (
-                            <button
-                                onClick={(e) => { e.stopPropagation(); goNext(); }}
-                                className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-30"
-                            >
+                            <button onClick={(e) => { e.stopPropagation(); goNext(); }} className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-30">
                                 <ChevronRight size={20} />
                             </button>
                         )}
 
-                        {/* Photo */}
                         <motion.div
                             key={photos[selectedIdx].id}
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.8, opacity: 0 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="relative max-w-[90vw] max-h-[80vh] rounded-2xl overflow-hidden shadow-2xl"
+                            className="relative bg-white rounded-2xl p-3 md:p-4 shadow-2xl max-w-[92vw] md:max-w-[600px]"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <Image
@@ -205,12 +191,12 @@ export default function PhotoGallery() {
                                 alt={photos[selectedIdx].title}
                                 width={800}
                                 height={1000}
-                                className="w-auto h-auto max-w-[90vw] max-h-[75vh] object-contain rounded-2xl"
+                                className="w-full h-auto rounded-xl max-h-[65vh] object-contain"
                             />
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 md:p-6">
-                                <h3 className="text-white font-bold font-space text-base md:text-lg">{photos[selectedIdx].title}</h3>
-                                <p className="text-white/70 text-xs md:text-sm mt-1">{photos[selectedIdx].caption}</p>
-                                <p className="text-white/40 text-[10px] font-mono mt-2">{selectedIdx + 1} / {photos.length}</p>
+                            <div className="pt-3 pb-1">
+                                <h3 className="text-gray-800 font-bold font-space text-sm md:text-base">{photos[selectedIdx].title}</h3>
+                                <p className="text-gray-500 text-xs mt-1">{photos[selectedIdx].caption}</p>
+                                <p className="text-gray-300 text-[10px] font-mono mt-2">{selectedIdx + 1} / {photos.length}</p>
                             </div>
                         </motion.div>
                     </motion.div>
