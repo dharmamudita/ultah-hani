@@ -41,14 +41,14 @@ export default function FriendsMessages() {
                 </div>
 
                 {/* Messages Layout: Side - Featured - Side */}
-                <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch gap-4 md:gap-6">
+                <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-stretch">
 
                     {/* Left - May */}
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="w-full lg:w-1/4 flex items-center"
+                        className="w-full flex items-center"
                     >
                         <div className="w-full relative group">
                             {/* Glassmorphism card */}
@@ -84,7 +84,7 @@ export default function FriendsMessages() {
                         initial={{ opacity: 0, y: 40, scale: 0.95 }}
                         animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
                         transition={{ duration: 0.7, delay: 0.2, type: "spring" }}
-                        className="w-full lg:w-2/4"
+                        className="w-full"
                     >
                         <div className="relative group">
                             {/* Gradient border glow */}
@@ -144,7 +144,7 @@ export default function FriendsMessages() {
                         initial={{ opacity: 0, x: 40 }}
                         animate={isInView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.6, delay: 0.3 }}
-                        className="w-full lg:w-1/4 flex items-center"
+                        className="w-full flex items-center"
                     >
                         <div className="w-full relative group">
                             {/* Dashed border card */}
