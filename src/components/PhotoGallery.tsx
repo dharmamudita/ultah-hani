@@ -55,10 +55,21 @@ export default function PhotoGallery() {
 
             {/* Film strip scroll */}
             <div className="relative mb-12 md:mb-20 overflow-hidden">
-                <div className="flex gap-3 md:gap-4 gallery-scroll" style={{ width: "fit-content" }}>
+                <div className="flex gap-4 md:gap-5 gallery-scroll" style={{ width: "fit-content" }}>
                     {[...filmPhotos, ...filmPhotos].map((src, idx) => (
-                        <div key={idx} className="w-[140px] h-[100px] md:w-[260px] md:h-[160px] rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0 hover:scale-105 transition-transform duration-300 shadow-lg shadow-pink-200/30">
-                            <Image src={src} alt={`Film ${idx}`} width={260} height={160} className="w-full h-full object-cover" />
+                        <div key={idx} className="flex-shrink-0 group">
+                            {/* Gradient border wrapper */}
+                            <div className="relative w-[150px] h-[110px] md:w-[270px] md:h-[170px] rounded-2xl md:rounded-3xl p-[3px] bg-gradient-to-br from-pink-400 via-rose-500 to-fuchsia-500 hover:from-pink-300 hover:via-rose-400 hover:to-fuchsia-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-pink-300/30">
+                                <div className="relative w-full h-full rounded-[13px] md:rounded-[21px] overflow-hidden bg-white">
+                                    <Image src={src} alt={`Film ${idx}`} width={270} height={170} className="w-full h-full object-cover" />
+                                    {/* Glass overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/10" />
+                                    {/* Film number */}
+                                    <div className="absolute bottom-1.5 right-1.5 md:bottom-2 md:right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-0.5">
+                                        <span className="text-[8px] md:text-[9px] text-white/80 font-mono">{String((idx % 8) + 1).padStart(2, "0")}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
