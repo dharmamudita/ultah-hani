@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
-import { MessageCircle, Sparkles } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 export default function FriendsMessages() {
     const ref = useRef(null);
@@ -93,23 +93,11 @@ export default function FriendsMessages() {
 
                             {/* Card content */}
                             <div className="relative bg-white rounded-3xl p-6 md:p-8 h-full">
-                                {/* Featured badge */}
-                                <div className="flex items-center justify-center mb-5">
-                                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200/60 rounded-full">
-                                        <Sparkles size={10} className="text-pink-500" />
-                                        <span className="text-[10px] text-pink-500 font-mono uppercase tracking-wider">Best Friend</span>
-                                        <Sparkles size={10} className="text-pink-500" />
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-3 mb-5">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 via-rose-500 to-fuchsia-500 flex items-center justify-center text-xl shadow-lg shadow-pink-300/30">
+                                <div className="flex items-center gap-2.5 mb-3">
+                                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-pink-400 via-rose-500 to-fuchsia-500 flex items-center justify-center text-sm shadow-md">
                                         💕
                                     </div>
-                                    <div>
-                                        <p className="text-gray-800 font-bold font-space text-base">Suci</p>
-                                        <p className="text-gray-400 text-[10px] font-mono">best friend forever</p>
-                                    </div>
+                                    <span className="text-gray-800 font-bold font-space text-sm">Suci</span>
                                 </div>
 
                                 <p className="text-gray-700 text-xs md:text-sm leading-relaxed italic">
