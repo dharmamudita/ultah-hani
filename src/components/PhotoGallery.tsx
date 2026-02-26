@@ -3,29 +3,29 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import AnimatedText from "./ui/AnimatedText";
-import { Camera, Heart, MapPin } from "lucide-react";
+import { Camera, Heart } from "lucide-react";
 import Image from "next/image";
 
 const photos = [
-    { id: 1, src: "/foto/1.jpeg", title: "Buket Hani", caption: "Kalau bunga bisa diganti sama kamu, pasti lebih cantik 💐", gradient: "from-pink-500 to-rose-500" },
-    { id: 3, src: "/foto/3.jpeg", title: "Mirror Selfie", caption: "Momen bareng yang selalu bikin kangen", gradient: "from-rose-500 to-pink-500" },
-    { id: 4, src: "/foto/4.jpeg", title: "Cantik Banget", caption: "Nggak pernah bosen liatin kamu 💕", gradient: "from-pink-400 to-rose-500" },
-    { id: 5, src: "/foto/5.jpeg", title: "4 Ekspresi", caption: "Setiap ekspresi kamu tuh lucu semua", gradient: "from-rose-400 to-pink-600" },
-    { id: 6, src: "/foto/6.jpeg", title: "Cafe Date", caption: "Ngopi bareng kamu itu healing terbaik ☕", gradient: "from-pink-500 to-fuchsia-500" },
-    { id: 7, src: "/foto/7.jpeg", title: "Nature Vibes", caption: "Cantiknya natural banget 🌿", gradient: "from-fuchsia-400 to-pink-500" },
-    { id: 8, src: "/foto/8.jpeg", title: "Di Kampus", caption: "Mahasiswi paling cantik seangkatan 📚", gradient: "from-pink-600 to-rose-500" },
-    { id: 9, src: "/foto/9.jpeg", title: "Night Out", caption: "Pose love selalu bikin meleleh 💗", gradient: "from-rose-500 to-fuchsia-500" },
-    { id: 10, src: "/foto/10.jpeg", title: "Senyum Manis", caption: "Senyum yang bisa bikin hari jadi lebih baik", gradient: "from-pink-500 to-rose-400" },
-    { id: 11, src: "/foto/11.jpeg", title: "Selfie di Kelas", caption: "Di kelas aja tetep cantik", gradient: "from-rose-400 to-pink-500" },
-    { id: 12, src: "/foto/12.jpeg", title: "Hangout Vibes", caption: "Senyum kamu itu contagious banget 😊", gradient: "from-pink-500 to-rose-600" },
-    { id: 13, src: "/foto/13.jpeg", title: "Pink Day", caption: "Warna pink emang cocok banget sama kamu 🩷", gradient: "from-pink-400 to-rose-400" },
-    { id: 14, src: "/foto/14.jpeg", title: "Peace! ✌️", caption: "Selalu ceria dan bikin semangat", gradient: "from-rose-500 to-pink-500" },
-    { id: 15, src: "/foto/15.jpeg", title: "Aesthetic", caption: "Cantik bareng bunga-bunga 🌸", gradient: "from-fuchsia-500 to-pink-500" },
-    { id: 16, src: "/foto/16.jpeg", title: "School Day", caption: "Paling rajin dan paling cantik di kelas", gradient: "from-pink-500 to-rose-500" },
-    { id: 17, src: "/foto/17.jpeg", title: "Shopping!", caption: "Mall date kapan lagi? 🛍️", gradient: "from-rose-400 to-fuchsia-400" },
+    { id: 1, src: "/foto/1.jpeg", title: "Buket Hani", caption: "Kalau bunga bisa diganti sama kamu, pasti lebih cantik 💐" },
+    { id: 3, src: "/foto/3.jpeg", title: "Mirror Selfie", caption: "Momen bareng yang selalu bikin kangen" },
+    { id: 4, src: "/foto/4.jpeg", title: "Cantik Banget", caption: "Nggak pernah bosen liatin kamu 💕" },
+    { id: 5, src: "/foto/5.jpeg", title: "4 Ekspresi", caption: "Setiap ekspresi kamu tuh lucu semua" },
+    { id: 6, src: "/foto/6.jpeg", title: "Cafe Date", caption: "Ngopi bareng kamu itu healing terbaik ☕" },
+    { id: 7, src: "/foto/7.jpeg", title: "Nature Vibes", caption: "Cantiknya natural banget 🌿" },
+    { id: 8, src: "/foto/8.jpeg", title: "Di Kampus", caption: "Mahasiswi paling cantik seangkatan 📚" },
+    { id: 9, src: "/foto/9.jpeg", title: "Night Out", caption: "Pose love selalu bikin meleleh 💗" },
+    { id: 10, src: "/foto/10.jpeg", title: "Senyum Manis", caption: "Senyum yang bisa bikin hari jadi lebih baik" },
+    { id: 11, src: "/foto/11.jpeg", title: "Selfie di Kelas", caption: "Di kelas aja tetep cantik" },
+    { id: 12, src: "/foto/12.jpeg", title: "Hangout Vibes", caption: "Senyum kamu itu contagious banget 😊" },
+    { id: 13, src: "/foto/13.jpeg", title: "Pink Day", caption: "Warna pink emang cocok banget sama kamu 🩷" },
+    { id: 14, src: "/foto/14.jpeg", title: "Peace! ✌️", caption: "Selalu ceria dan bikin semangat" },
+    { id: 15, src: "/foto/15.jpeg", title: "Aesthetic", caption: "Cantik bareng bunga-bunga 🌸" },
+    { id: 16, src: "/foto/16.jpeg", title: "School Day", caption: "Paling rajin dan paling cantik di kelas" },
+    { id: 17, src: "/foto/17.jpeg", title: "Shopping!", caption: "Mall date kapan lagi? 🛍️" },
 ];
 
-// Scroll strip pakai foto asli juga
+// Scroll strip photos
 const scrollPhotos = [
     "/foto/4.jpeg", "/foto/8.jpeg", "/foto/13.jpeg", "/foto/14.jpeg",
     "/foto/6.jpeg", "/foto/9.jpeg", "/foto/15.jpeg", "/foto/17.jpeg",
@@ -42,7 +42,7 @@ export default function PhotoGallery() {
                 <div className="absolute bottom-1/4 -right-40 w-[500px] h-[500px] bg-purple-500/[0.03] rounded-full blur-[120px]" />
             </div>
 
-            {/* Scrolling photo strip */}
+            {/* Scrolling photo strip - ukuran tetap */}
             <div className="relative mb-12 md:mb-16 overflow-hidden">
                 <div className="flex gap-3 md:gap-4 gallery-scroll" style={{ width: "fit-content" }}>
                     {[...scrollPhotos, ...scrollPhotos].map((src, idx) => (
@@ -73,8 +73,8 @@ export default function PhotoGallery() {
                     </motion.div>
 
                     <AnimatedText
-                        text="MOMEN KITA BERDUA"
-                        className="text-2xl md:text-5xl lg:text-6xl font-black font-space tracking-tighter text-gray-800 mb-5"
+                        text="MEMORIES"
+                        className="text-3xl md:text-5xl lg:text-6xl font-black font-space tracking-tighter text-gray-800 mb-5"
                         type="words"
                         animation="fadeUp"
                     />
@@ -84,45 +84,39 @@ export default function PhotoGallery() {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4">
-                    {photos.map((photo, idx) => {
-                        const isLarge = idx === 0 || idx === 5;
-                        return (
-                            <motion.div
-                                key={photo.id}
-                                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                                className={`group relative ${isLarge ? 'col-span-2 row-span-2' : ''}`}
-                            >
-                                <div className={`relative w-full ${isLarge ? 'h-[240px] md:h-[400px]' : 'h-[160px] md:h-[200px]'} rounded-xl md:rounded-2xl overflow-hidden`}>
-                                    <Image
-                                        src={photo.src}
-                                        alt={photo.title}
-                                        fill
-                                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                                        sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
-                                    />
+                {/* Masonry-style gallery — foto tidak terpotong */}
+                <div className="columns-2 md:columns-3 lg:columns-4 gap-2 md:gap-3 space-y-2 md:space-y-3">
+                    {photos.map((photo, idx) => (
+                        <motion.div
+                            key={photo.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.5, delay: idx * 0.04 }}
+                            className="group relative break-inside-avoid rounded-xl md:rounded-2xl overflow-hidden"
+                        >
+                            <Image
+                                src={photo.src}
+                                alt={photo.title}
+                                width={400}
+                                height={500}
+                                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            />
 
-                                    {/* Shine effect */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-
-                                    {/* Hover overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 md:p-4 z-10">
-                                        <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                                            <h4 className="text-white font-bold font-space text-xs md:text-sm mb-0.5">{photo.title}</h4>
-                                            <p className="text-white/80 text-[10px] md:text-xs">{photo.caption}</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Heart icon */}
-                                    <div className="absolute top-2 right-2 w-6 h-6 md:w-7 md:h-7 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                                        <Heart size={10} className="text-pink-400" />
-                                    </div>
+                            {/* Hover overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 md:p-4 z-10">
+                                <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                    <h4 className="text-white font-bold font-space text-xs md:text-sm mb-0.5">{photo.title}</h4>
+                                    <p className="text-white/80 text-[10px] md:text-xs">{photo.caption}</p>
                                 </div>
-                            </motion.div>
-                        );
-                    })}
+                            </div>
+
+                            {/* Heart icon */}
+                            <div className="absolute top-2 right-2 w-6 h-6 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                                <Heart size={10} className="text-pink-400" />
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
 
                 <motion.p
