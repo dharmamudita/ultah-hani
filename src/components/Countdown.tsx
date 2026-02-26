@@ -34,7 +34,7 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
         <div className="flex flex-col items-center">
             <div className="relative">
                 <div
-                    className="bg-white/70 border border-pink-100 backdrop-blur-sm rounded-2xl md:rounded-3xl w-[72px] h-[88px] md:w-[120px] md:h-[140px] flex items-center justify-center overflow-hidden shadow-sm">
+                    className="bg-white/70 border border-pink-100 backdrop-blur-sm rounded-xl md:rounded-3xl w-[60px] h-[76px] md:w-[120px] md:h-[140px] flex items-center justify-center overflow-hidden shadow-sm">
                     <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent h-1/2" />
                     <AnimatePresence mode="popLayout">
                         <motion.span
@@ -43,7 +43,7 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
                             animate={{ y: 0, opacity: 1, scale: 1 }}
                             exit={{ y: -30, opacity: 0, scale: 0.8 }}
                             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                            className="text-3xl md:text-6xl font-black font-space text-gray-800 tabular-nums"
+                            className="text-2xl md:text-6xl font-black font-space text-gray-800 tabular-nums"
                         >
                             {display}
                         </motion.span>
@@ -51,7 +51,7 @@ function TimeUnit({ value, label }: { value: number; label: string }) {
                     <div className="absolute inset-x-0 top-1/2 h-px bg-white/[0.04]" />
                 </div>
             </div>
-            <span className="mt-3 text-[10px] md:text-xs text-gray-500 uppercase tracking-[0.2em] font-mono">{label}</span>
+            <span className="mt-3 text-[9px] md:text-xs text-gray-500 uppercase tracking-[0.15em] md:tracking-[0.2em] font-mono">{label}</span>
         </div>
     );
 }
@@ -171,14 +171,14 @@ export default function Countdown({ onComplete }: { onComplete: () => void }) {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.1, type: "spring" }}
-                    className="flex items-center gap-3 md:gap-6 mb-12"
+                    className="flex items-center gap-1.5 md:gap-6 mb-8 md:mb-12"
                 >
                     <TimeUnit value={timeLeft.days} label="Hari" />
-                    <span className="text-2xl md:text-4xl text-pink-400/40 font-thin mt-[-24px] md:mt-[-28px]">:</span>
+                    <span className="text-lg md:text-4xl text-pink-400/40 font-thin mt-[-20px] md:mt-[-28px]">:</span>
                     <TimeUnit value={timeLeft.hours} label="Jam" />
-                    <span className="text-2xl md:text-4xl text-pink-400/40 font-thin mt-[-24px] md:mt-[-28px]">:</span>
+                    <span className="text-lg md:text-4xl text-pink-400/40 font-thin mt-[-20px] md:mt-[-28px]">:</span>
                     <TimeUnit value={timeLeft.minutes} label="Menit" />
-                    <span className="text-2xl md:text-4xl text-pink-400/40 font-thin mt-[-24px] md:mt-[-28px]">:</span>
+                    <span className="text-lg md:text-4xl text-pink-400/40 font-thin mt-[-20px] md:mt-[-28px]">:</span>
                     <TimeUnit value={timeLeft.seconds} label="Detik" />
                 </motion.div>
 
