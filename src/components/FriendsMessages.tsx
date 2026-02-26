@@ -112,17 +112,8 @@ export default function FriendsMessages() {
                                     </div>
                                 </div>
 
-                                <p className="text-gray-700 text-sm md:text-base leading-relaxed md:leading-loose italic">
-                                    &quot;happy birthday my besttttt friendddd 🎂
-                                </p>
-                                <p className="text-gray-600 text-sm md:text-base leading-relaxed md:leading-loose mt-3">
-                                    semoga hari-hari mu selalu dipenuhi kebaikan dan keindahan, semoga semesta berpihak padamu, dan setiap langkahmu di mudahkan menuju masa depan yang cerah.
-                                </p>
-                                <p className="text-gray-600 text-sm md:text-base leading-relaxed md:leading-loose mt-3">
-                                    teruslah berkembang, teruslah melangkah, dan temukan kebahagiaanmu. jangan lupa untuk menjaga kesehatanmu.
-                                </p>
-                                <p className="text-gray-600 text-sm md:text-base leading-relaxed md:leading-loose mt-3">
-                                    untuk segala yang dibalas dan tak terbalas, semoga yang baik kembali kepadamu, dan yang buruk tersimpan diruang hati yang paling ikhlas.&quot;
+                                <p className="text-gray-700 text-xs md:text-sm leading-relaxed italic">
+                                    &quot;happy birthday my besttttt friendddd 🎂 semoga hari-hari mu selalu dipenuhi kebaikan dan keindahan, semoga semesta berpihak padamu, dan setiap langkahmu di mudahkan menuju masa depan yang cerah. teruslah berkembang, teruslah melangkah, dan temukan kebahagiaanmu. jangan lupa untuk menjaga kesehatanmu. untuk segala yang dibalas dan tak terbalas, semoga yang baik kembali kepadamu, dan yang buruk tersimpan diruang hati yang paling ikhlas.&quot;
                                 </p>
 
                                 <div className="mt-6 pt-4 border-t border-pink-100 flex items-center justify-between">
