@@ -125,16 +125,6 @@ export default function PhotoGallery() {
                                     </motion.div>
                                 </div>
 
-                                {/* Caption area */}
-                                <div className="pt-2 md:pt-3 pb-1">
-                                    <div className="flex items-start justify-between gap-2">
-                                        <div>
-                                            <h4 className="text-gray-800 font-bold font-space text-[11px] md:text-xs">{photo.title}</h4>
-                                            <p className="text-gray-400 text-[9px] md:text-[10px] mt-0.5 leading-tight">{photo.caption}</p>
-                                        </div>
-                                        <span className="text-[9px] text-pink-400/60 font-mono whitespace-nowrap">{String(idx + 1).padStart(2, "0")}</span>
-                                    </div>
-                                </div>
                             </div>
                         </motion.div>
                     ))}
@@ -193,10 +183,8 @@ export default function PhotoGallery() {
                                 height={1000}
                                 className="w-full h-auto rounded-xl max-h-[65vh] object-contain"
                             />
-                            <div className="pt-3 pb-1">
-                                <h3 className="text-gray-800 font-bold font-space text-sm md:text-base">{photos[selectedIdx].title}</h3>
-                                <p className="text-gray-500 text-xs mt-1">{photos[selectedIdx].caption}</p>
-                                <p className="text-gray-300 text-[10px] font-mono mt-2">{selectedIdx + 1} / {photos.length}</p>
+                            <div className="pt-2 pb-1 text-center">
+                                <p className="text-gray-300 text-[10px] font-mono">{selectedIdx + 1} / {photos.length}</p>
                             </div>
                         </motion.div>
                     </motion.div>
