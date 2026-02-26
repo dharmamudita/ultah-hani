@@ -6,32 +6,30 @@ import AnimatedText from "./ui/AnimatedText";
 import { Camera, Heart, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
-// Cache buster — update angka ini kalau ganti foto
-const V = "?v=2";
-
+// Photos
 const photos = [
-    { id: 1, src: `/foto/1.jpeg${V}`, title: "Buket Hani", caption: "Kalau bunga bisa diganti sama kamu, pasti lebih cantik 💐", size: "large" },
-    { id: 4, src: `/foto/4.jpeg${V}`, title: "Cantik Banget", caption: "Nggak pernah bosen liatin kamu 💕", size: "medium" },
-    { id: 9, src: `/foto/9.jpeg${V}`, title: "Night Out", caption: "Pose love selalu bikin meleleh 💗", size: "medium" },
-    { id: 3, src: `/foto/3.jpeg${V}`, title: "Mirror Selfie", caption: "Momen bareng yang selalu bikin kangen", size: "tall" },
-    { id: 6, src: `/foto/6.jpeg${V}`, title: "Cafe Date", caption: "Ngopi bareng kamu itu healing terbaik ☕", size: "medium" },
-    { id: 14, src: `/foto/14.jpeg${V}`, title: "Peace! ✌️", caption: "Selalu ceria dan bikin semangat", size: "wide" },
-    { id: 8, src: `/foto/8.jpeg${V}`, title: "Di Kampus", caption: "Mahasiswi paling cantik seangkatan 📚", size: "medium" },
-    { id: 5, src: `/foto/5.jpeg${V}`, title: "4 Ekspresi", caption: "Setiap ekspresi kamu tuh lucu semua", size: "large" },
-    { id: 13, src: `/foto/13.jpeg${V}`, title: "Pink Day", caption: "Warna pink emang cocok banget sama kamu 🩷", size: "medium" },
-    { id: 10, src: `/foto/10.jpeg${V}`, title: "Senyum Manis", caption: "Senyum yang bikin hari jadi lebih baik", size: "tall" },
-    { id: 15, src: `/foto/15.jpeg${V}`, title: "Aesthetic", caption: "Cantik bareng bunga-bunga 🌸", size: "medium" },
-    { id: 7, src: `/foto/7.jpeg${V}`, title: "Nature Vibes", caption: "Cantiknya natural banget 🌿", size: "medium" },
-    { id: 12, src: `/foto/12.jpeg${V}`, title: "Hangout Vibes", caption: "Senyum kamu itu contagious banget 😊", size: "wide" },
-    { id: 17, src: `/foto/17.jpeg${V}`, title: "Shopping!", caption: "Mall date kapan lagi? 🛍️", size: "medium" },
-    { id: 11, src: `/foto/11.jpeg${V}`, title: "Selfie di Kelas", caption: "Di kelas aja tetep cantik", size: "medium" },
-    { id: 16, src: `/foto/16.jpeg${V}`, title: "School Day", caption: "Paling rajin dan paling cantik di kelas", size: "tall" },
+    { id: 1, src: "/foto/1.jpeg", title: "Buket Hani", caption: "Kalau bunga bisa diganti sama kamu, pasti lebih cantik 💐", size: "large" },
+    { id: 4, src: "/foto/4.jpeg", title: "Cantik Banget", caption: "Nggak pernah bosen liatin kamu 💕", size: "medium" },
+    { id: 9, src: "/foto/9.jpeg", title: "Night Out", caption: "Pose love selalu bikin meleleh 💗", size: "medium" },
+    { id: 3, src: "/foto/3.jpeg", title: "Mirror Selfie", caption: "Momen bareng yang selalu bikin kangen", size: "tall" },
+    { id: 6, src: "/foto/6.jpeg", title: "Cafe Date", caption: "Ngopi bareng kamu itu healing terbaik ☕", size: "medium" },
+    { id: 14, src: "/foto/14.jpeg", title: "Peace! ✌️", caption: "Selalu ceria dan bikin semangat", size: "wide" },
+    { id: 8, src: "/foto/8.jpeg", title: "Di Kampus", caption: "Mahasiswi paling cantik seangkatan 📚", size: "medium" },
+    { id: 5, src: "/foto/5.jpeg", title: "4 Ekspresi", caption: "Setiap ekspresi kamu tuh lucu semua", size: "large" },
+    { id: 13, src: "/foto/13.jpeg", title: "Pink Day", caption: "Warna pink emang cocok banget sama kamu 🩷", size: "medium" },
+    { id: 10, src: "/foto/10.jpeg", title: "Senyum Manis", caption: "Senyum yang bikin hari jadi lebih baik", size: "tall" },
+    { id: 15, src: "/foto/15.jpeg", title: "Aesthetic", caption: "Cantik bareng bunga-bunga 🌸", size: "medium" },
+    { id: 7, src: "/foto/7.jpeg", title: "Nature Vibes", caption: "Cantiknya natural banget 🌿", size: "medium" },
+    { id: 12, src: "/foto/12.jpeg", title: "Hangout Vibes", caption: "Senyum kamu itu contagious banget 😊", size: "wide" },
+    { id: 17, src: "/foto/17.jpeg", title: "Shopping!", caption: "Mall date kapan lagi? 🛍️", size: "medium" },
+    { id: 11, src: "/foto/11.jpeg", title: "Selfie di Kelas", caption: "Di kelas aja tetep cantik", size: "medium" },
+    { id: 16, src: "/foto/16.jpeg", title: "School Day", caption: "Paling rajin dan paling cantik di kelas", size: "tall" },
 ];
 
 // Featured photos for the filmstrip
 const filmPhotos = [
-    `/foto/14.jpeg${V}`, `/foto/9.jpeg${V}`, `/foto/13.jpeg${V}`, `/foto/6.jpeg${V}`,
-    `/foto/4.jpeg${V}`, `/foto/8.jpeg${V}`, `/foto/15.jpeg${V}`, `/foto/17.jpeg${V}`,
+    "/foto/14.jpeg", "/foto/9.jpeg", "/foto/13.jpeg", "/foto/6.jpeg",
+    "/foto/4.jpeg", "/foto/8.jpeg", "/foto/15.jpeg", "/foto/17.jpeg",
 ];
 
 export default function PhotoGallery() {
