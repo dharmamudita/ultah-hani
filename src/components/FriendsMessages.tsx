@@ -50,9 +50,9 @@ export default function FriendsMessages() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="w-full flex items-center"
                     >
-                        <div className="w-full relative group">
+                        <div className="w-full h-full relative group">
                             {/* Glassmorphism card */}
-                            <div className="relative bg-white/60 backdrop-blur-xl border border-pink-200/50 rounded-2xl p-5 md:p-6 shadow-[0_8px_32px_rgba(236,72,153,0.08)] hover:shadow-[0_12px_40px_rgba(236,72,153,0.15)] transition-all duration-300 hover:-translate-y-1">
+                            <div className="relative h-full bg-white/60 backdrop-blur-xl border border-pink-200/50 rounded-2xl p-5 md:p-6 shadow-[0_8px_32px_rgba(236,72,153,0.08)] hover:shadow-[0_12px_40px_rgba(236,72,153,0.15)] transition-all duration-300 hover:-translate-y-1">
                                 {/* Decorative corner dots */}
                                 <div className="absolute top-3 right-3 flex gap-1">
                                     <div className="w-1.5 h-1.5 rounded-full bg-pink-300" />
@@ -86,13 +86,13 @@ export default function FriendsMessages() {
                         transition={{ duration: 0.7, delay: 0.2, type: "spring" }}
                         className="w-full"
                     >
-                        <div className="relative group">
+                        <div className="relative group h-full">
                             {/* Gradient border glow */}
                             <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-400 via-rose-500 to-fuchsia-500 rounded-3xl opacity-70 group-hover:opacity-100 blur-sm transition-opacity duration-300" />
                             <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-400 via-rose-500 to-fuchsia-500 rounded-3xl" />
 
                             {/* Card content */}
-                            <div className="relative bg-white rounded-3xl p-6 md:p-8">
+                            <div className="relative bg-white rounded-3xl p-6 md:p-8 h-full">
                                 {/* Featured badge */}
                                 <div className="flex items-center justify-center mb-5">
                                     <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-200/60 rounded-full">
@@ -146,9 +146,9 @@ export default function FriendsMessages() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="w-full flex items-center"
                     >
-                        <div className="w-full relative group">
+                        <div className="w-full h-full relative group">
                             {/* Dashed border card */}
-                            <div className="relative bg-white/60 backdrop-blur-xl border-2 border-dashed border-rose-300/60 rounded-2xl p-5 md:p-6 hover:border-rose-400 hover:bg-white/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-200/20">
+                            <div className="relative h-full bg-white/60 backdrop-blur-xl border-2 border-dashed border-rose-300/60 rounded-2xl p-5 md:p-6 hover:border-rose-400 hover:bg-white/80 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-200/20">
                                 {/* Decorative corner dots */}
                                 <div className="absolute top-3 right-3 flex gap-1">
                                     <div className="w-1.5 h-1.5 rounded-full bg-rose-300" />
